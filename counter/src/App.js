@@ -3,8 +3,6 @@ import { RegrokProvider } from '@regrokjs/core';
 import { store } from './store';
 import { Counter } from './Counter';
 
-console.log(RegrokProvider);
-
 function App() {
   return (
     <RegrokProvider store={store}>

@@ -1,16 +1,13 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import App from './components/App'
-import reducer from './reducers'
-import 'todomvc-app-css/index.css'
-
-const store = createStore(reducer)
+import React from 'react';
+import { render } from 'react-dom';
+import { RegrokProvider } from '@regrokjs/core';
+import App from './components/App';
+import { store } from './store';
+import 'todomvc-app-css/index.css';
 
 render(
-  <Provider store={store}>
+  <RegrokProvider store={store}>
     <App />
-  </Provider>,
+  </RegrokProvider>,
   document.getElementById('root')
-)
+);

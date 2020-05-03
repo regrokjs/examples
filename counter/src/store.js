@@ -1,14 +1,17 @@
-import { createSlice, createStore } from '@regrokjs/core';
+import { createSlice, createStore, Slice } from '@regrokjs/core';
 
-const counter = createSlice({
-  initialState: {
-    value: 0,
-  },
+class CounterSlice extends Slice {
+  constructor(config) {
+    super(config);
+    this.state = { value: 0 };
+  }
   increment() {
-    this.state.value++;
-  },
-});
+    this.setState((state) => {
+      state.value++;
+    });
+  }
+}
 
 export const store = createStore({
-  counter,
+  counter: createSlice(CounterSlice),
 });

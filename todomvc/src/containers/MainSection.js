@@ -1,23 +1,20 @@
-import { connect } from 'react-redux'
-import * as TodoActions from '../actions'
-import { bindActionCreators } from 'redux'
-import MainSection from '../components/MainSection'
-import { getCompletedTodoCount } from '../selectors'
+import React from 'react';
+import MainSection from '../components/MainSection';
+import { getCompletedTodoCount } from '../selectors';
+import { useStore } from '@regrokjs/core';
+import { store } from '../store';
 
+const MainSectionContainer = () => {
+  const [{ todos }, actions] = useStore(store.todos);
+  const todosCount = todos.length;
+  const completedCount = getCompletedTodoCount(todos);
+  return (
+    <MainSection
+      actions={actions}
+      todosCount={todosCount}
+      completedCount={completedCount}
+    />
+  );
+};
 
-const mapStateToProps = state => ({
-  todosCount: state.todos.length,
-  completedCount: getCompletedTodoCount(state)
-})
-
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(TodoActions, dispatch)
-})
-
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainSection)
-
+export default MainSectionContainer;

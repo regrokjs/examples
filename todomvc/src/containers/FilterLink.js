@@ -1,18 +1,18 @@
-import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions'
-import Link from '../components/Link'
+import React from 'react';
+import { useStore } from '@regrokjs/core';
+import Link from '../components/Link';
+import { store } from '../store';
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
-})
+const FilterLink = (props) => {
+  const [{ filter }, { setVisibilityFilter }] = useStore(
+    store.visibilityFilter
+  );
+  const active = props.filter === filter;
+  return (
+    <Link active={active} setFilter={() => setVisibilityFilter(props.filter)}>
+      {props.children}
+    </Link>
+  );
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  setFilter: () => {
-    dispatch(setVisibilityFilter(ownProps.filter))
-  }
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Link)
+export default FilterLink;

@@ -1,5 +1,11 @@
-import { connect } from 'react-redux'
-import Header from '../components/Header'
-import { addTodo } from '../actions'
+import Header from '../components/Header';
+import React from 'react';
+import { useStore } from '@regrokjs/core';
+import { store } from '../store';
 
-export default connect(null, { addTodo })(Header)
+const ConnectedHeader = () => {
+  const [, { addTodo }] = useStore(store.todos);
+  return <Header addTodo={addTodo} />;
+};
+
+export default ConnectedHeader;
