@@ -1,4 +1,6 @@
-# Redux TodoMVC Example
+# Regrok.js TodoMVC Example
+
+Based on https://github.com/reduxjs/redux/tree/master/examples/todomvc but using regrok instead of redux
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
 
