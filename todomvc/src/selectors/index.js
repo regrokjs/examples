@@ -16,6 +16,3 @@ export const getVisibleTodos = (visibilityFilter, todos) => {
       throw new Error('Unknown filter: ' + visibilityFilter);
   }
 };
-
-export const getCompletedTodoCount = (todos) =>
-  todos.reduce((count, todo) => (todo.completed ? count + 1 : count), 0);
